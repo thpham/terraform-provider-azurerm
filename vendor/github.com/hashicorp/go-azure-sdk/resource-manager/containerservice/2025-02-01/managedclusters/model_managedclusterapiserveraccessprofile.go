@@ -8,5 +8,7 @@ type ManagedClusterAPIServerAccessProfile struct {
 	DisableRunCommand              *bool     `json:"disableRunCommand,omitempty"`
 	EnablePrivateCluster           *bool     `json:"enablePrivateCluster,omitempty"`
 	EnablePrivateClusterPublicFQDN *bool     `json:"enablePrivateClusterPublicFQDN,omitempty"`
+	EnableVnetIntegration          *bool     `json:"enableVnetIntegration,omitempty"`
 	PrivateDNSZone                 *string   `json:"privateDNSZone,omitempty"`
+	SubnetId                       *string   `json:"subnetId,omitempty"`
 }
