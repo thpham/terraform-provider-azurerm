@@ -288,7 +288,7 @@ An `api_server_access_profile` block supports the following:
 
 * `vnet_integration_enabled` - (Optional) Should API Server VNet Integration be enabled? For more details please visit [Use API Server VNet Integration](https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration).
 
--> **Note:** This requires that the Preview Feature `Microsoft.ContainerService/EnableAPIServerVnetIntegrationPreview` is enabled and the Resource Provider is re-registered, see [the documentation](https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration#register-the-enableapiservervnetintegrationpreview-preview-feature) for more information.
+-> **Note:** This feature is only available in [limited regions](https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration#limited-availability). Please check the Azure documentation for current region availability.
 
 ---
 
