@@ -193,11 +193,6 @@ service/datadog:
   - any-glob-to-any-file:
     - internal/services/datadog/**/*
 
-service/dev-center:
-- changed-files:
-  - any-glob-to-any-file:
-    - internal/services/devcenter/**/*
-
 service/devtestlabs:
 - changed-files:
   - any-glob-to-any-file:
