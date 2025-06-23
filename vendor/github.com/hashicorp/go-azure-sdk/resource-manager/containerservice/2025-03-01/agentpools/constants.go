@@ -311,6 +311,7 @@ const (
 	OSSKUAzureLinux            OSSKU = "AzureLinux"
 	OSSKUCBLMariner            OSSKU = "CBLMariner"
 	OSSKUUbuntu                OSSKU = "Ubuntu"
+	OSSKUUbuntuTwoTwoZeroFour  OSSKU = "Ubuntu2204"
 	OSSKUWindowsTwoZeroOneNine OSSKU = "Windows2019"
 	OSSKUWindowsTwoZeroTwoTwo  OSSKU = "Windows2022"
 )
@@ -320,6 +321,7 @@ func PossibleValuesForOSSKU() []string {
 		string(OSSKUAzureLinux),
 		string(OSSKUCBLMariner),
 		string(OSSKUUbuntu),
+		string(OSSKUUbuntuTwoTwoZeroFour),
 		string(OSSKUWindowsTwoZeroOneNine),
 		string(OSSKUWindowsTwoZeroTwoTwo),
 	}
@@ -343,6 +345,7 @@ func parseOSSKU(input string) (*OSSKU, error) {
 		"azurelinux":  OSSKUAzureLinux,
 		"cblmariner":  OSSKUCBLMariner,
 		"ubuntu":      OSSKUUbuntu,
+		"ubuntu2204":  OSSKUUbuntuTwoTwoZeroFour,
 		"windows2019": OSSKUWindowsTwoZeroOneNine,
 		"windows2022": OSSKUWindowsTwoZeroTwoTwo,
 	}
@@ -557,6 +560,47 @@ func parseScaleSetPriority(input string) (*ScaleSetPriority, error) {
 
 	// otherwise presume it's an undefined value and best-effort it
 	out := ScaleSetPriority(input)
+	return &out, nil
+}
+
+type UndrainableNodeBehavior string
+
+const (
+	UndrainableNodeBehaviorCordon   UndrainableNodeBehavior = "Cordon"
+	UndrainableNodeBehaviorSchedule UndrainableNodeBehavior = "Schedule"
+)
+
+func PossibleValuesForUndrainableNodeBehavior() []string {
+	return []string{
+		string(UndrainableNodeBehaviorCordon),
+		string(UndrainableNodeBehaviorSchedule),
+	}
+}
+
+func (s *UndrainableNodeBehavior) UnmarshalJSON(bytes []byte) error {
+	var decoded string
+	if err := json.Unmarshal(bytes, &decoded); err != nil {
+		return fmt.Errorf("unmarshaling: %+v", err)
+	}
+	out, err := parseUndrainableNodeBehavior(decoded)
+	if err != nil {
+		return fmt.Errorf("parsing %q: %+v", decoded, err)
+	}
+	*s = *out
+	return nil
+}
+
+func parseUndrainableNodeBehavior(input string) (*UndrainableNodeBehavior, error) {
+	vals := map[string]UndrainableNodeBehavior{
+		"cordon":   UndrainableNodeBehaviorCordon,
+		"schedule": UndrainableNodeBehaviorSchedule,
+	}
+	if v, ok := vals[strings.ToLower(input)]; ok {
+		return &v, nil
+	}
+
+	// otherwise presume it's an undefined value and best-effort it
+	out := UndrainableNodeBehavior(input)
 	return &out, nil
 }
 

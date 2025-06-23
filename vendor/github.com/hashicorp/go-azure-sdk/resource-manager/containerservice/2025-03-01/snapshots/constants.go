@@ -15,6 +15,7 @@ const (
 	OSSKUAzureLinux            OSSKU = "AzureLinux"
 	OSSKUCBLMariner            OSSKU = "CBLMariner"
 	OSSKUUbuntu                OSSKU = "Ubuntu"
+	OSSKUUbuntuTwoTwoZeroFour  OSSKU = "Ubuntu2204"
 	OSSKUWindowsTwoZeroOneNine OSSKU = "Windows2019"
 	OSSKUWindowsTwoZeroTwoTwo  OSSKU = "Windows2022"
 )
@@ -24,6 +25,7 @@ func PossibleValuesForOSSKU() []string {
 		string(OSSKUAzureLinux),
 		string(OSSKUCBLMariner),
 		string(OSSKUUbuntu),
+		string(OSSKUUbuntuTwoTwoZeroFour),
 		string(OSSKUWindowsTwoZeroOneNine),
 		string(OSSKUWindowsTwoZeroTwoTwo),
 	}
@@ -47,6 +49,7 @@ func parseOSSKU(input string) (*OSSKU, error) {
 		"azurelinux":  OSSKUAzureLinux,
 		"cblmariner":  OSSKUCBLMariner,
 		"ubuntu":      OSSKUUbuntu,
+		"ubuntu2204":  OSSKUUbuntuTwoTwoZeroFour,
 		"windows2019": OSSKUWindowsTwoZeroOneNine,
 		"windows2022": OSSKUWindowsTwoZeroTwoTwo,
 	}
